@@ -5,12 +5,10 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
 import java.time.Period;
 
-@Repository
 @Entity
 @Table(name = "users")
 @Getter
