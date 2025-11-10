@@ -1,5 +1,6 @@
 package com.example.restfullservice.controller;
 
+import com.example.restfullservice.model.dto.UserCreateRequest;
 import com.example.restfullservice.model.entity.User;
 import com.example.restfullservice.service.UserService;
 import org.springframework.stereotype.Controller;
@@ -13,7 +14,6 @@ import java.util.List;
 public class UserController {
     private final UserService userService;
 
-
     public UserController(UserService userService) {
         this.userService = userService;
     }
@@ -24,8 +24,8 @@ public class UserController {
     }
 
     @PostMapping
-    public User create(@RequestBody User user) {
-        return userService.create(user);
+    public User create(@RequestBody UserCreateRequest request) {
+        return userService.create(request);
     }
 
     @DeleteMapping(path = "{id}")

@@ -1,6 +1,7 @@
 package com.example.restfullservice.model.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -22,10 +23,12 @@ public class User {
     private Long id;
 
     @NotNull
+    @NotBlank
     @Column(name = "name", nullable = false)
     private String name;
 
     @NotNull
+    @NotBlank
     @Column(name = "email", nullable = false)
     private String email;
 
@@ -33,8 +36,7 @@ public class User {
     @Column(name = "birth_date")
     private LocalDate birthDate;
 
-    public User(long id, String name, String email, LocalDate birth) {
-        this.id = id;
+    public User(String name, String email, LocalDate birth) {
         this.name = name;
         this.email = email;
         this.birthDate = birth;
