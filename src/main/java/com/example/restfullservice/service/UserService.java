@@ -1,6 +1,6 @@
 package com.example.restfullservice.service;
 
-import com.example.restfullservice.repository.User;
+import com.example.restfullservice.model.entity.User;
 import com.example.restfullservice.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
@@ -28,7 +28,6 @@ public class UserService {
             throw new IllegalArgumentException("Пользователь с таким + " + beEmail + " уже существует!"
                     + "\nПроверьте корректность вводимого вами Email");
         }
-        user.setAge(Period.between(user.getBirth(), LocalDate.now()).getYears());
         return userRepository.save(user);
     }
 

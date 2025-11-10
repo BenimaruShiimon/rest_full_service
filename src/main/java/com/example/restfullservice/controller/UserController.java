@@ -1,6 +1,6 @@
 package com.example.restfullservice.controller;
 
-import com.example.restfullservice.repository.User;
+import com.example.restfullservice.model.entity.User;
 import com.example.restfullservice.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
