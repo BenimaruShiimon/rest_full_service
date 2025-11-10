@@ -8,3 +8,10 @@ spring:
   liquibase:
     enabled: true
     change-log: classpath:db/changelog/db.changelog-master.xml
+    url: ${db.url}
+    user: ${db.username}
+    password: ${db.password}
+    default-schema: public
+  jpa:
+    hibernate:
+      ddl-auto: none
