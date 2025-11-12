@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.28.xsd">
+
+    <changeSet id="1762770582555" author="petrenkoiv">
+        <preConditions>
+            <sqlCheck expectedResult="f">
+                select exists(
+                    select 1
+                    from information_schema.tables
+                    where table_schema = 'public'
+                    and table_name = 'users'
+                );
+            </sqlCheck>
+        </preConditions>
+        <sql>
+            create table if not exists users
+            (
+                id bigserial primary key,
+                name text not null,
+                email text not null constraint users_unique_email unique,
+                birth_date date
+            );
+
+            comment on table users is 'Пользователи';
+            comment on column users.id is 'Идентификатор записи';
+            comment on column users.name is 'Имя пользователя';
+            comment on column users.email is 'Электронная почта';
+            comment on column users.birth_date is 'Дата рождения';
+        </sql>
+        <rollback>
+            <sql>
+                drop table if exists users;
+            </sql>
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>
